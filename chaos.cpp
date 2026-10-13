@@ -31,15 +31,10 @@ State rk4_step(const State& s, double dt) {
     return next;
 }
 
-double norm(const State& s) {
-    return std::sqrt(s.x * s.x + s.y * s.y + s.z * s.z);
-}
 
 double benettin(const State& s0, double d0, int n_steps) {
     State s = s0;
     State delta(1.0, 0.0, 0.0);
-    double nd = norm(delta);
-    delta.x /= nd; delta.y /= nd; delta.z /= nd;
 
     State sp(s.x + d0 * delta.x,
              s.y + d0 * delta.y,
